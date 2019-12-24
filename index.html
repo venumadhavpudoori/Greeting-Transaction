@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+
+<head>
+    <title>Greeting Contract</title>
+</head>
+
+<body>
+    <p id='display'>Waiting for Window to load</p>
+</body>
+
+<script>
+
+    window.addEventListener('load', function () {
+
+        var contractAddress = '0xe5ec544fe3Fa84cC09FDBEDB44032a84A2b19205';  //replace with your contract address 
+        var abiGreeter = [
+            {
+                "constant": true,
+                "inputs": [],
+                "name": "geetingString",
+                "outputs": [
+                    {
+                        "internalType": "string",
+                        "name": "",
+                        "type": "string"
+                    }
+                ],
+                "payable": false,
+                "stateMutability": "view",
+                "type": "function"
+            }
+        ]
+		        console.log('Calling the smart contract',);
+
+        var mainContract = web3.eth.contract(abiGreeter).at(contractAddress);
+        mainContract.geetingString.call((err, res) => document.getElementById('display').innerHTML = res)
+    })
+</script>
+
+</html>
+
+</html>
+
